@@ -1,14 +1,19 @@
 <?php
 
-function pswGenerator($wishedLength)
-{
+session_start();
 
-    $randomString = '';
 
-    while (strlen($randomString) < $wishedLength) {
+function pswGenerator($wishedLength){
 
-        $randomString .= chr(rand(33, 126));
+    $_SESSION['randomPass'] = '';
+
+    while (strlen($_SESSION['randomPass']) < $wishedLength) {
+
+        $_SESSION['randomPass'] .= chr(rand(33, 126));
     }
 
-    return $randomString;
 }
+
+
+
+
