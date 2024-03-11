@@ -13,11 +13,14 @@ include __DIR__ . '/functions.php';
 </head>
 
 <body>
-    <?php if (isset($_GET['lunghezza']) && $_GET['lunghezza'] > 0 && $_GET['lunghezza'] < 101) : ?>
-        <span>Eccoti una password sicura: <br><?php pswGenerator($_GET['lunghezza']);
-                                                echo $_SESSION['randomPass'] ?></span>
-    <?php elseif (isset($_GET['lunghezza'])) : ?>
-        <span>La lunghezza deve'essere di minimo 1 carattere e massimo 100</span>
-    <?php endif; ?>
+    
+        <?php pswGenerator($_GET['lunghezza']); ?>
+        <?php if (!empty($_SESSION['randomPass'])) : ?>
+            <span> <?php echo htmlentities($_SESSION['randomPass'], ENT_QUOTES) ?> </span>
+        <?php else : ?>
+            <span> <?php echo $_SESSION['errore'] ?></span>
+        <?php endif; ?>
+        
+    
 </body>
 </html>
